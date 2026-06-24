@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Video | iamsmarttips</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter', sans-serif;
+  background:#0b0b0f;
+  color:#fff;
+}
+
+/* NAVBAR */
+.navbar{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+
+  background:rgba(255,255,255,0.03);
+  backdrop-filter:blur(10px);
+
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.nav-container{
+  max-width:1200px;
+  margin:auto;
+
+  padding:18px 20px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.nav-links{
+  display:flex;
+  gap:25px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:#aaa;
+  font-size:14px;
+
+  transition:0.3s ease;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+.btn{
+  background:#ec489ab5;
+  padding:10px 18px;
+  border-radius:8px;
+
+  color:#fff;
+  text-decoration:none;
+  font-size:14px;
+
+  transition:0.35s ease;
+}
+
+.btn:hover{
+  background:#ec4899;
+}
+
+/* PAGE */
+.video-page{
+  padding:140px 20px 100px;
+}
+
+.video-container{
+  max-width:1100px;
+  margin:auto;
+}
+
+/* BACK BUTTON */
+.back-btn{
+  display:inline-block;
+
+  margin-bottom:30px;
+
+  color:#9ca3af;
+  text-decoration:none;
+  font-size:14px;
+
+  transition:0.3s ease;
+}
+
+.back-btn:hover{
+  color:#fff;
+}
+
+/* VIDEO */
+.video-player{
+  width:100%;
+  overflow:hidden;
+
+  border-radius:20px;
+
+  margin-bottom:35px;
+
+  background:#111;
+}
+
+.video-player iframe{
+  width:100%;
+  aspect-ratio:16/9;
+  border:none;
+}
+
+/* DATE */
+.video-date{
+  color:#888;
+  font-size:14px;
+
+  margin-bottom:15px;
+}
+
+/* TITLE */
+.video-title{
+  font-size:3.7rem;
+  line-height:1.1;
+
+  max-width:900px;
+
+  margin-bottom:25px;
+}
+
+/* TAGS */
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+
+  margin-bottom:35px;
+}
+
+.tag{
+  padding:7px 14px;
+
+  border-radius:999px;
+
+  background:rgba(255,255,255,0.05);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  color:#b4b4b4;
+  font-size:12px;
+}
+
+/* DESCRIPTION */
+.video-description{
+  max-width:850px;
+
+  color:#b0b0b0;
+
+  line-height:1.9;
+  font-size:1rem;
+
+  margin-bottom:60px;
+}
+
+/* RESOURCE BOX */
+.resource-box{
+  background:rgba(255,255,255,0.03);
+
+  border:1px solid rgba(255,255,255,0.08);
+
+  border-radius:20px;
+
+  padding:30px;
+
+  margin-bottom:70px;
+}
+
+.resource-box small{
+  display:block;
+
+  margin-bottom:20px;
+
+  color:#8b8b8b;
+  letter-spacing:1px;
+}
+
+.resource-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.resource-inner h3{
+  margin-bottom:8px;
+}
+
+.resource-inner p{
+  color:#999;
+  font-size:14px;
+}
+
+.download-btn{
+  background:#fff;
+  color:#000;
+
+  text-decoration:none;
+
+  padding:14px 20px;
+  border-radius:10px;
+
+  font-weight:600;
+
+  transition:0.35s ease;
+}
+
+.download-btn:hover{
+  background:#ff4d5a;
+  color:#fff;
+
+  transform:translateY(-3px);
+}
+
+/* MORE VIDEOS */
+.more-videos h2{
+  font-size:2rem;
+  margin-bottom:30px;
+}
+
+/* GRID */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+/* CARD */
+.video-card{
+  text-decoration:none;
+  color:#fff;
+
+  transition:0.35s ease;
+}
+
+.video-card:hover{
+  transform:translateY(-6px);
+}
+
+/* THUMB */
+.thumb{
+  position:relative;
+
+  overflow:hidden;
+  border-radius:14px;
+
+  aspect-ratio:16/9;
+}
+
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+
+  transition:0.35s ease;
+}
+
+.video-card:hover img{
+  transform:scale(1.05);
+}
+
+/* PLAY */
+.thumb::after{
+  content:"▶";
+
+  position:absolute;
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  width:50px;
+  height:50px;
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,0.65);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  color:#fff;
+}
+
+/* VIDEO INFO */
+.video-info{
+  margin-top:12px;
+}
+
+.video-info h3{
+  font-size:15px;
+  line-height:1.5;
+
+  margin-bottom:10px;
+}
+
+.meta{
+  display:flex;
+  gap:10px;
+
+  color:#777;
+  font-size:12px;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:100px;
+
+  border-top:1px solid rgba(255,255,255,0.05);
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+
+  padding:60px 20px;
+
+  display:flex;
+  justify-content:space-between;
+}
+
+.footer p{
+  color:#888;
+  font-size:14px;
+}
+
+.footer-links,
+.footer-socials{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.footer a{
+  text-decoration:none;
+  color:#aaa;
+  font-size:14px;
+}
+
+.footer-bottom{
+  text-align:center;
+
+  padding:20px;
+
+  border-top:1px solid rgba(255,255,255,0.05);
+
+  color:#777;
+  font-size:13px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+  .video-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .video-title{
+    font-size:2.8rem;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .video-grid{
+    grid-template-columns:1fr;
+  }
+
+  .video-title{
+    font-size:2rem;
+  }
+
+  .resource-inner{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+  <div class="nav-container">
+
+    <h2>iamsmarttips</h2>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="content.html">Content</a>
+      <a href="shop.html">Shop</a>
+      <a href="#">Blog</a>
+    </div>
+
+    <a href="#" class="btn">
+      Work With Me
+    </a>
+
+  </div>
+
+</nav>
+
+<!-- PAGE -->
+<section class="video-page">
+
+  <div class="video-container">
+
+    <!-- BACK -->
+    <a href="content.html" class="back-btn">
+      ← All Videos
+    </a>
+
+    <!-- VIDEO -->
+    <div class="video-player">
+
+      <iframe
+        src="https://www.youtube.com/embed/0f19q13AyrY"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <!-- DATE -->
+    <div class="video-date">
+      April 29, 2026
+    </div>
+
+    <!-- TITLE -->
+    <h1 class="video-title">
+      Why Your AI Outputs Are Trash (And How to Fix Them)
+    </h1>
+
+    <!-- TAGS -->
+    <div class="tags">
+
+      <span class="tag">AI</span>
+      <span class="tag">Productivity</span>
+      <span class="tag">Tutorial</span>
+
+    </div>
+
+    <!-- DESCRIPTION -->
+    <p class="video-description">
+
+      Learn why most AI prompts fail and how to structure better prompts
+      for smarter outputs, stronger productivity, and faster workflows.
+
+      This video explains practical prompt engineering techniques in a
+      beginner-friendly way.
+
+    </p>
+
+    <!-- RESOURCE -->
+    <div class="resource-box">
+
+      <small>FREE RESOURCE</small>
+
+      <div class="resource-inner">
+
+        <div>
+
+          <h3>AI Prompt Guide</h3>
+
+          <p>
+            Download the exact prompt structure used in this video.
+          </p>
+
+        </div>
+
+        <a href="#" class="download-btn">
+          Download ↗
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- MORE VIDEOS -->
+    <div class="more-videos">
+
+      <h2>More videos</h2>
+
+      <div class="video-grid">
+
+        <!-- CARD -->
+        <a href="#" class="video-card">
+
+          <div class="thumb">
+            <img src="assets/images/img2.jpg">
+          </div>
+
+          <div class="video-info">
+
+            <h3>
+              AI Productivity Secrets
+            </h3>
+
+            <div class="meta">
+              <span>Main Channel</span>
+              <span>Mar 4, 2026</span>
+            </div>
+
+          </div>
+
+        </a>
+
+        <!-- CARD -->
+        <a href="#" class="video-card">
+
+          <div class="thumb">
+            <img src="assets/images/img3.jpg">
+          </div>
+
+          <div class="video-info">
+
+            <h3>
+              Tools Every Creator Should Use
+            </h3>
+
+            <div class="meta">
+              <span>Main Channel</span>
+              <span>Feb 20, 2026</span>
+            </div>
+
+          </div>
+
+        </a>
+
+        <!-- CARD -->
+        <a href="#" class="video-card">
+
+          <div class="thumb">
+            <img src="assets/images/img4.jpg">
+          </div>
+
+          <div class="video-info">
+
+            <h3>
+              How To Make Better AI Prompts
+            </h3>
+
+            <div class="meta">
+              <span>Main Channel</span>
+              <span>Jan 8, 2026</span>
+            </div>
+
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <div>
+      <h3>iamsmarttips</h3>
+
+      <p>
+        Tech creator helping you understand technology in simple ways.
+      </p>
+    </div>
+
+    <div class="footer-links">
+
+      <h4>Links</h4>
+
+      <a href="#">Home</a>
+      <a href="#">Content</a>
+      <a href="#">Work With Me</a>
+      <a href="#">Blog</a>
+
+    </div>
+
+    <div class="footer-socials">
+
+      <h4>Follow</h4>
+
+      <a href="#">TikTok</a>
+      <a href="#">YouTube</a>
+      <a href="#">Facebook</a>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 iamsmarttips. All rights reserved.
+  </div>
+
+</footer>
+
+</body>
+</html>
