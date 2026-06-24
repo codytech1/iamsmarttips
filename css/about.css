@@ -1,0 +1,467 @@
+.about-heading,
+.quick-title,
+.timeline-title,
+.timeline-content h3,
+.fact-card h3,
+.cta-container h2{
+  color:var(--text);
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.about-hero{
+  padding:150px 20px 0px;
+}
+
+.about-hero-container{
+  max-width:1200px;
+  margin:0 auto 0;
+}
+
+.section-label{
+  color:var(--primary);
+  letter-spacing:2px;
+  font-size:12px;
+  margin-bottom:25px;
+}
+
+
+
+.about-grid{
+
+  display:grid;
+
+  grid-template-columns:1fr 420px;
+
+  gap:80px;
+
+  align-items:center;
+
+}
+
+.about-heading{
+  line-height:1.05;
+  font-size:72px;
+  margin-bottom:20px;
+
+  color:var(--text);
+}
+
+.about-intro-text{
+
+  font-size:28px;
+
+  line-height:1.5;
+
+  color:var(--text-secondary);
+
+  margin-bottom:40px;
+
+}
+
+.about-stats{
+
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:20px;
+
+}
+
+.about-stat{
+
+  padding:28px;
+
+  border:1px solid var(--border);
+
+  border-radius:20px;
+
+}
+
+.about-image{
+  position:relative;
+}
+
+.about-image::before{
+  content:"";
+
+  position:absolute;
+  inset:20px -20px -20px 20px;
+
+  z-index:-1;
+}
+
+.about-image img{
+  width:100%;
+  display:block;
+
+  object-fit:cover;
+  border-radius:24px;
+}
+
+.about-text{
+  color:var(--text-secondary);
+
+  line-height:1.9;
+  font-size:18px;
+}
+
+.about-text p{
+  margin-bottom:35px;
+}
+
+/* =========================
+   QUICK FACTS
+========================= */
+
+.quick-facts{
+  padding:100px 20px;
+}
+
+.quick-container{
+  max-width:1200px;
+  margin:auto;
+}
+
+.quick-title{
+  font-size:56px;
+  margin-bottom:70px;
+
+  color:var(--text);
+}
+
+.facts-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:50px;
+}
+
+.fact-card{
+  border-left:2px solid var(--primary);
+  padding-left:20px;
+}
+
+.fact-card h3{
+  margin-bottom:15px;
+  font-size:24px;
+
+  color:var(--text);
+}
+
+.fact-card p{
+  color:var(--text-secondary);
+
+  line-height:1.8;
+  font-size:15px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline-section{
+  padding:120px 20px 160px;
+
+  background:var(--bg-secondary);
+}
+
+.timeline-container{
+  max-width:1000px;
+  margin:auto;
+}
+
+.timeline-title{
+  font-size:58px;
+  margin-bottom:80px;
+
+  color:var(--text);
+}
+
+.timeline-item{
+  display:grid;
+  grid-template-columns:120px 1fr;
+
+  gap:40px;
+
+  margin-bottom:70px;
+}
+
+.timeline-year{
+  color:var(--primary);
+
+  font-weight:700;
+  font-size:18px;
+}
+
+.timeline-content h3{
+  font-size:28px;
+  margin-bottom:12px;
+
+  color:var(--text);
+}
+
+.timeline-content p{
+  color:var(--text-secondary);
+
+  line-height:1.9;
+}
+
+/* =========================
+   CTA SECTION
+========================= */
+
+.cta-section{
+  padding:120px 20px;
+
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.cta-container{
+  max-width:900px;
+  margin:auto;
+
+  text-align:center;
+}
+
+.cta-container h2{
+  font-size:64px;
+  margin-bottom:25px;
+
+  color:var(--text);
+}
+
+.cta-container p{
+  color:var(--text-secondary);
+
+  line-height:1.8;
+
+  margin-bottom:40px;
+}
+
+.cta-btn{
+  display:inline-block;
+
+  padding:16px 30px;
+
+  background:var(--text);
+  color:var(--bg);
+
+  text-decoration:none;
+
+  border-radius:10px;
+
+  font-weight:600;
+
+  transition:.35s ease;
+}
+
+.cta-btn:hover{
+  background:var(--primary);
+  color:#fff;
+
+  transform:translateY(-3px);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+  /* HERO */
+
+  .about-hero{
+    padding:90px 20px 0;
+  }
+
+  .about-heading{
+    font-size:36px;
+    line-height:1.1;
+    margin-bottom:20px;
+    text-align:center;
+  }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:30px;
+    text-align:center;
+  }
+
+  .about-image{
+    order:1;
+    max-width:280px;
+    margin:0 auto;
+  }
+
+  .about-image img{
+    width:100%;
+    display:block;
+    border-radius:20px;
+  }
+
+  .about-text{
+    order:2;
+    font-size:15px;
+    line-height:1.9;
+  }
+
+  .about-text p{
+    margin-bottom:20px;
+  }
+
+  .about-intro-text{
+
+  font-size:15px;
+
+}
+
+  /* QUICK FACTS */
+
+  .quick-facts{
+    padding:40px 20px;
+  }
+
+  .quick-title{
+    font-size:32px;
+    line-height:1.2;
+    text-align:center;
+    margin: 0 auto 30px;
+  }
+
+  .facts-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .fact-card{
+    padding:24px;
+  }
+
+  .fact-card h3{
+    font-size:1.1rem;
+  }
+
+  .fact-card p{
+    font-size:.95rem;
+    line-height:1.7;
+  }
+
+  /* TIMELINE */
+
+  .timeline-section{
+    padding:60px 20px;
+  }
+
+  .timeline-title{
+    font-size:32px;
+    line-height:1.2;
+    text-align:center;
+  }
+
+  .timeline-item{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+    text-align:center;
+    padding:24px 0;
+  }
+
+  .timeline-year{
+    font-size:1.2rem;
+    font-weight:700;
+  }
+
+  .timeline-content h3{
+    font-size:1.1rem;
+  }
+
+  .timeline-content p{
+    font-size:.95rem;
+    line-height:1.7;
+  }
+
+  /* CTA */
+
+  .cta-section{
+    padding:60px 20px;
+  }
+
+  .cta-container h2{
+    font-size:32px;
+    line-height:1.2;
+  }
+
+  .cta-container p{
+    font-size:.95rem;
+  }
+
+  .cta-btn{
+    width:100%;
+    max-width:320px;
+    margin:20px auto 0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+    .quick-facts,
+    .timeline-section,
+    .cta-section{
+    padding-top:50px;
+    padding-bottom:50px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .about-grid{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    text-align:center !important;
+    gap:30px !important;
+    }
+
+    .about-image{
+    order:-999 !important;
+    width:180px;
+    height:180px;
+    margin:0 auto 0 !important;
+    }
+
+  .about-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:24px;
+  }
+
+  .about-stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin:25px 0 30px;
+  }
+
+  .about-stat{
+    padding:18px;
+    border:1px solid rgba(0,0,0,.08);
+    border-radius:16px;
+  }
+
+  .about-stat h3{
+    margin-bottom:4px;
+  }
+
+  .about-text{
+    max-width:320px;
+    margin:0 auto;
+  }
+
+}

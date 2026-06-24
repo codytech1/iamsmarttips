@@ -1,0 +1,620 @@
+.theme-toggle{
+  width:42px;
+  height:42px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  background:var(--bg-card);
+
+  cursor:pointer;
+
+  transition:.3s ease;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: var(--navbar-bg);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-container{
+  max-width: 1200px;
+  margin: auto;
+
+  padding: 10px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO */
+
+.logo{
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+
+  line-height: 1;
+}
+
+/* NAV LINKS */
+
+.nav-links{
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a{
+  color: var(--text-secondary);
+  font-size: 14px;
+
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color: var(--text);
+}
+
+/* THEME TOGGLE */
+
+.theme-toggle{
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--bg-card);
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  position: relative;
+}
+
+
+.theme-toggle:hover::after{
+  opacity: 1;
+  visibility: visible;
+}
+
+.theme-toggle::after{
+  content: "Switch Theme";
+
+  position: absolute;
+
+  bottom: -38px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  background: var(--bg-card);
+  color: var(--text);
+
+  padding: 6px 10px;
+
+  border-radius: 6px;
+
+  font-size: 12px;
+  white-space: nowrap;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.25s ease;
+
+  border: 1px solid var(--border);
+
+  pointer-events: none;
+}
+
+/* NAVBAR BUTTON */
+.nav-btn{
+  background: rgba(186,182,182,0.3);
+
+  height: 37px;
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 700;
+
+  transition: 0.4s ease;
+}
+
+.nav-btn:hover{
+  background: var(--primary);
+  color: #fff;
+}
+
+
+/* =========================
+   MOBILE MENU TOGGLE
+========================= */
+
+.menu-toggle{
+
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+  z-index:1002;
+
+}
+
+.menu-toggle span{
+
+  width:26px;
+  height:3px;
+
+  background:var(--text);
+
+  border-radius:999px;
+
+}
+
+@media (max-width:768px){
+
+  .nav-links,
+  .nav-btn{
+
+    display:none;
+
+  }
+
+  .menu-toggle{
+
+    display:flex;
+
+  }
+
+}
+
+/* =========================
+   MOBILE MENU PANEL
+========================= */
+
+html,
+
+body{
+
+  overflow-x:hidden;
+
+}
+
+.mobile-menu{
+
+  position:fixed;
+
+  top:0;
+  left:-100%;
+
+  width: 70%;
+  max-width: 380px;
+
+  height:100dvh;
+
+  background:#f8f7f5;
+
+  z-index:1001;
+
+  overflow-y:auto;
+
+  display:flex;
+
+  flex-direction:column;
+
+  transition:left .35s ease;
+
+  padding:32px 24px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+  12px 0 40px rgba(0,0,0,.15);
+
+}
+
+.mobile-menu.active{
+
+  left:0;
+
+}
+
+/* =========================
+   HEADER
+========================= */
+
+
+
+.close-menu{
+
+  position:absolute;
+
+  top:20px;
+
+  right:20px;
+
+  width:auto;
+
+  height:auto;
+
+  border:none;
+
+  background:none;
+
+  color:#777;
+
+  font-size:20px;
+
+  line-height:1;
+
+  cursor:pointer;
+
+  padding:0;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  z-index:10;
+
+}
+
+.close-menu img{
+
+  width:22px;
+
+  height:22px;
+
+  opacity:.6;
+
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.mobile-profile{
+
+  text-align:center;
+
+  margin-bottom:32px;
+
+}
+
+.mobile-profile img{
+
+  width:80px;
+  height:80px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  margin-bottom:12px;
+
+}
+
+.mobile-profile h3{
+
+  font-size:18px;
+
+  font-weight:700;
+
+  color:#111;
+
+  margin-bottom:4px;
+
+}
+
+.mobile-profile p{
+
+  font-size:14px;
+
+  color:#777;
+
+}
+
+/* =========================
+   MAIN LINKS
+========================= */
+
+.mobile-links{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:4px;
+
+}
+
+.mobile-links a{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+  padding:10px 12px;
+
+  border-radius:18px;
+
+  text-decoration:none;
+
+  color:#777;
+
+  font-size:14px;
+
+  font-weight:500;
+
+}
+
+.mobile-links a.active{
+
+  background:#f3efef;
+
+  color:#111;
+
+  font-weight:600;
+
+  border-radius:16px;
+
+}
+
+.mobile-links a:active{
+  transform:scale(.98);
+}
+
+.menu-icon{
+
+  width:24px;
+
+  height:24px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+.menu-icon img{
+
+  width:16px;
+
+  height:16px;
+
+  object-fit:contain;
+
+}
+
+.menu-text{
+
+  flex:1;
+
+}
+
+/* =========================
+   FIND ME
+========================= */
+
+/* =========================
+   SOCIAL LINKS
+========================= */
+
+.mobile-socials{
+
+  padding-top:25px;
+
+  border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.mobile-socials h4{
+
+  margin-bottom:18px;
+
+  font-size:.85rem;
+
+  letter-spacing:2px;
+
+  font-weight:500;
+
+  color:var(--text-secondary);
+
+}
+
+.mobile-socials a{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:14px 0;
+
+  color:var(--text);
+
+  text-decoration:none;
+
+  transition:.25s ease;
+
+}
+
+.mobile-socials a:hover{
+
+  color:var(--primary);
+
+}
+
+.external-icon{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+}
+
+.external-icon img{
+
+  width:18px;
+
+  height:18px;
+
+  opacity:.7;
+
+  transition:.25s ease;
+
+}
+
+.mobile-socials a:hover .external-icon img{
+
+  opacity:1;
+
+  transform:
+    translateX(3px)
+    translateY(-3px);
+
+}
+
+.social-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:14px;
+
+}
+
+.social-left img{
+
+  width:20px;
+
+  height:20px;
+
+  object-fit:contain;
+
+  opacity:.8;
+
+}
+
+.mobile-socials a{
+
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  padding:14px 0;
+
+  text-decoration:none;
+
+  color:#111;
+
+}
+
+.mobile-socials a span{
+
+  font-size:14px;
+
+}
+
+/* =========================
+   CTA BUTTON
+========================= */
+
+.mobile-cta{
+
+  margin-top:20px;
+
+
+}
+
+.mobile-cta a{
+
+  display:block;
+
+  text-align:center;
+
+  background:#ec4899;
+
+  color:white;
+
+  padding:18px;
+
+  border-radius:20px;
+
+  font-weight:700;
+
+  text-decoration:none;
+
+  font-size:1.1rem;
+
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.mobile-overlay{
+
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.55);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  z-index:1000;
+
+  transition:.3s ease;
+
+}
+
+.mobile-overlay.active{
+
+  opacity:1;
+
+  visibility:visible;
+
+}

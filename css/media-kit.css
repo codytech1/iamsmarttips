@@ -1,0 +1,614 @@
+:root{
+
+  --primary:#c44f87;
+
+}
+
+
+/* =========================
+   MEDIA KIT PAGE
+========================= */
+
+.container{
+  max-width:1200px;
+  margin:auto;
+
+  padding:140px 20px 80px;
+}
+
+/* =========================
+   FLOATING DOWNLOAD BUTTON
+========================= */
+
+.download-btn{
+  position:fixed;
+
+  bottom:25px;
+  right:25px;
+
+  background:#b13f76;
+
+  color:#fff;
+
+  padding:14px 22px;
+
+  border-radius:50px;
+
+  font-size:14px;
+  font-weight:600;
+
+  text-decoration:none;
+
+  z-index:999;
+
+  transition:.3s ease;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.25);
+}
+
+.download-btn:hover{
+  transform:translateY(-4px);
+}
+
+/* =========================
+   PAGE LABEL
+========================= */
+
+.page-label{
+  text-align:center;
+
+  color:var(--primary);
+
+  font-size:13px;
+
+  font-weight:700;
+
+  letter-spacing:3px;
+
+  margin-bottom:50px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  display:flex;
+
+  align-items:center;
+
+  gap:60px;
+}
+
+.hero img{
+  width:320px;
+
+  border-radius:24px;
+
+  border:1px solid var(--border);
+
+  object-fit:cover;
+}
+
+.hero-text{
+  flex:1;
+}
+
+.hero-text h1{
+  font-size:clamp(2.5rem,5vw,4rem);
+
+  color:var(--text);
+
+  margin-bottom:10px;
+}
+
+.hero-text h2{
+  color:var(--text-secondary);
+
+  font-size:1.1rem;
+
+  font-weight:600;
+
+  margin-bottom:24px;
+}
+
+.hero-text p{
+  color: var(--text-secondary);
+
+  line-height:1.8;
+
+  font-size:1rem;
+
+  margin-bottom:30px;
+}
+
+/* =========================
+   HERO CTA
+========================= */
+
+.hero-cta{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:14px 24px;
+
+  background:#aaa9a953;
+
+  color:var(--text-secondary);
+
+  border-radius:12px;
+
+  font-weight:600;
+
+  transition:.3s ease;
+}
+
+.hero-cta:hover,
+.download-btn:hover{
+  transform:translateY(-3px);
+  background:#9f3669;
+  color: #ffff;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider{
+  height:1px;
+
+  background:var(--border);
+
+  margin:80px 0;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+  text-align:center;
+
+  color:var(--primary);
+
+  font-size:13px;
+
+  font-weight:700;
+
+  letter-spacing:3px;
+
+  text-transform:uppercase;
+
+  margin-bottom:40px;
+}
+
+/* =========================
+   AUDIENCE REACH
+========================= */
+
+.social-section{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
+  gap:24px;
+  margin-bottom: 50px;
+}
+
+.social-item{
+  background:var(--bg-card);
+
+  border:1px solid var(--border);
+
+  border-radius:20px;
+
+  padding:24px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:16px;
+
+  transition:.3s ease;
+}
+
+.social-item{
+  background: rgba(255, 255, 255, 0.159);
+
+  border:1px solid var(--border);
+}
+
+.social-item:hover{
+  transform:translateY(-5px);
+
+  border-color:var(--primary);
+}
+
+.social-item img{
+  width:48px;
+  height:48px;
+  padding:10px;
+  background:rgba(255, 255, 255, 0.642);
+  border-radius:12px;
+}
+
+.social-item h4{
+  margin:0;
+
+  color:var(--text);
+
+  font-size:1rem;
+}
+
+.social-item p{
+  margin:3px 0;
+
+  color:var(--text-secondary);
+
+  font-size:.9rem;
+}
+
+.social-item .numbers{
+  color:var(--text);
+
+  font-weight:700;
+
+  font-size:.95rem;
+}
+
+/* =========================
+   BRANDS
+========================= */
+
+.brands{
+  background:var(--bg-card);
+
+  border:1px solid var(--border);
+
+  border-radius:24px;
+
+  padding:40px;
+}
+
+.brands h3{
+  text-align:center;
+
+  color:var(--text);
+
+  margin-bottom:35px;
+
+  font-size:1.2rem;
+
+  letter-spacing:1px;
+}
+
+.brands a{
+  text-decoration:none;
+
+  color:inherit;
+}
+
+.brand-logos{
+  display:flex;
+
+  gap:40px;
+
+  overflow-x:auto;
+
+  padding-bottom:10px;
+
+  align-items:center;
+
+  scroll-behavior:smooth;
+
+  -webkit-overflow-scrolling:touch;
+}
+
+.brand-logos::-webkit-scrollbar{
+  height:6px;
+}
+
+.brand-logos::-webkit-scrollbar-thumb{
+  background:var(--border);
+
+  border-radius:10px;
+}
+
+.brand-item{
+  display:flex;
+
+  flex-direction:column;
+
+  align-items:center;
+
+  justify-content:center;
+
+  min-width:120px;
+
+  transition:.3s ease;
+}
+
+.brand-item:hover{
+  transform:translateY(-5px);
+}
+
+.brand-item img{
+  width:70px;
+  height:70px;
+
+  border-radius:50%;
+
+  object-fit:cover;
+
+  border:1px solid var(--border);
+
+  background:var(--bg);
+}
+
+.brand-item span{
+  margin-top:10px;
+
+  color:var(--text);
+
+  font-size:.9rem;
+
+  text-align:center;
+}
+
+/* =========================
+   PARTNERSHIP SECTION
+========================= */
+
+.split{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,minmax(350px,1fr));
+
+  gap:30px;
+}
+
+.split-box{
+  background:var(--bg-card);
+
+  border:1px solid var(--border);
+
+  border-radius:20px;
+
+  padding:30px;
+}
+
+.split-box h3{
+  color:var(--text);
+
+  margin-bottom:20px;
+
+  font-size:1.1rem;
+}
+
+.split-box ul{
+  list-style:none;
+
+  padding:0;
+
+  margin:0;
+}
+
+.split-box li{
+  color:var(--text-secondary);
+
+  line-height:1.8;
+
+  margin-bottom:12px;
+}
+
+.contact{
+  max-width:700px;
+
+  margin:0 auto;
+
+  text-align:center;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.contact h3{
+  margin-bottom:8px;
+}
+
+.contact h4{
+  margin-bottom:16px;
+}
+
+.contact p{
+  margin:6px 0;
+}
+
+
+/* =========================
+   MOBILE MEDIA KIT
+========================= */
+
+@media (max-width:768px){
+
+  /* CONTAINER */
+
+  .container{
+    padding:100px 16px 60px;
+  }
+
+  /* DOWNLOAD BUTTON */
+
+  .download-btn{
+    bottom:14px;
+    right:14px;
+
+    padding:12px 18px;
+
+    font-size:13px;
+  }
+
+  /* PAGE LABEL */
+
+  .page-label{
+    margin-bottom:35px;
+    font-size:12px;
+  }
+
+  /* HERO */
+
+  .hero{
+    flex-direction:column;
+    text-align:center;
+    gap:30px;
+  }
+
+  .hero img{
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+    margin:0 auto;
+  }
+
+  .hero-text h1{
+    font-size:2.3rem;
+    line-height:1.1;
+  }
+
+  .hero-text h2{
+    font-size:1rem;
+    margin-bottom:18px;
+  }
+
+  .hero-text p{
+    font-size:.95rem;
+    line-height:1.8;
+    margin-bottom:24px;
+  }
+
+  .hero-cta{
+    width:100%;
+    max-width:260px;
+  }
+
+  /* DIVIDERS */
+
+  .divider{
+    margin:50px 0;
+  }
+
+  /* SECTION TITLES */
+
+  .section-title{
+    margin-bottom:25px;
+    font-size:12px;
+  }
+
+  /* AUDIENCE CARDS */
+
+  .social-section{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .social-item{
+    padding:18px;
+  }
+
+  .social-item img{
+    width:42px;
+    height:42px;
+    padding:8px;
+  }
+
+  .social-item h4{
+    font-size:.95rem;
+  }
+
+  .social-item p{
+    font-size:.85rem;
+  }
+
+  .social-item .numbers{
+    font-size:.9rem;
+  }
+
+  /* BRANDS */
+
+  .brands{
+    padding:24px;
+  }
+
+  .brands h3{
+    font-size:1rem;
+    margin-bottom:24px;
+  }
+
+  .brand-logos{
+    gap:24px;
+  }
+
+  .brand-item{
+    min-width:90px;
+  }
+
+  .brand-item img{
+    width:60px;
+    height:60px;
+  }
+
+  .brand-item span{
+    font-size:.8rem;
+  }
+
+  /* PARTNERSHIP INFO */
+
+  .split{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+
+  .split-box{
+    padding:22px;
+  }
+
+  .split-box h3{
+    font-size:1rem;
+    margin-bottom:14px;
+  }
+
+  .split-box li{
+    font-size:.9rem;
+    line-height:1.7;
+  }
+
+  /* CONTACT */
+
+  .contact{
+    text-align:center;
+  }
+
+  .contact h3{
+    font-size:1.3rem;
+  }
+
+  .contact h4{
+    font-size:1rem;
+    margin:10px 0 15px;
+  }
+
+  .contact p{
+    font-size:.95rem;
+    line-height:1.7;
+  }
+
+}

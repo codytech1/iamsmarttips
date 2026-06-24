@@ -1,0 +1,44 @@
+:root{
+
+  /* BACKGROUNDS */
+  --bg:#0b0b0f;
+  --bg-secondary:#121218;
+  --bg-card:#15151c;
+  --bg-card-hover:#1f1f28;
+
+  /* TEXT */
+  --text:#ffffff;
+  --text-secondary:#b3b3b3;
+  --text-muted:#888888;
+
+  /* BRAND */
+  --primary:#ec4899;
+  --accent:#3b82f6;
+
+  /* BORDERS */
+  --border:rgba(255,255,255,.08);
+
+  /* NAVBAR */
+  --navbar-bg:rgba(20,20,25,.5);
+
+  /* SHADOWS */
+  --shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+body.light-theme{
+
+  --bg:#ffffff;
+  --bg-secondary:#f6f6f6;
+  --bg-card:#ffffff;
+  --bg-card-hover:#f2f2f2;
+
+  --text:#111111;
+  --text-secondary:#555555;
+  --text-muted:#777777;
+
+  --border:rgba(0,0,0,.08);
+
+  --navbar-bg:rgba(255,255,255,.8);
+
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
