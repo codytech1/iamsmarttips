@@ -10,9 +10,11 @@
 
   width: 100%;
 
-  padding: 90px 20px 40px;
+  padding: 50px 20px 0px;
 
   z-index: 100;
+
+  border-top: 2px rgba(0, 0, 0, 0.041) solid;
 }
 
 .footer-container{
