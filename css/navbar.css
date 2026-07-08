@@ -1,19 +1,4 @@
-.theme-toggle{
-  width:42px;
-  height:42px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  border-radius:50%;
-
-  background:var(--bg-card);
-
-  cursor:pointer;
-
-  transition:.3s ease;
-}
 
 /* =========================
    NAVBAR
@@ -74,59 +59,77 @@
 /* THEME TOGGLE */
 
 .theme-toggle{
-  width: 42px;
-  height: 42px;
+  width:42px;
+  height:42px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 
-  border-radius: 50%;
+  border-radius:50%;
 
-  background: var(--bg-card);
+  cursor:pointer;
 
-  cursor: pointer;
+  font-size:18px;
 
-  transition: 0.3s ease;
+  transition:
+    background .3s ease,
+    color .3s ease,
+    transform .35s cubic-bezier(.2,.8,.2,1);
+}
 
-  position: relative;
+/* Rotation animation */
+
+.theme-toggle.rotate{
+
+    transform:
+
+        scale(.88)
+
+        rotate(180deg);
+
+}
+
+.theme-toggle.finish{
+
+    transform:
+
+        scale(1.08)
+
+        rotate(180deg);
+
+}
+
+body:not(.light-theme) .theme-toggle{
+    color:#fff;
+    background:transparent;
+}
+
+body:not(.light-theme) .theme-toggle:hover{
+    background:#fff;
+    color:#111;
+}
+
+body.light-theme .theme-toggle{
+    color:#111;
+    background:transparent;
+}
+
+body.light-theme .theme-toggle:hover{
+    background:#111;
+    color:#fff;
+}
+
+.theme-toggle:hover{
+    transform:scale(1.08);
+}
+
+.theme-toggle:active{
+    transform:scale(.95);
 }
 
 
-.theme-toggle:hover::after{
-  opacity: 1;
-  visibility: visible;
-}
 
-.theme-toggle::after{
-  content: "Switch Theme";
-
-  position: absolute;
-
-  bottom: -38px;
-  left: 50%;
-
-  transform: translateX(-50%);
-
-  background: var(--bg-card);
-  color: var(--text);
-
-  padding: 6px 10px;
-
-  border-radius: 6px;
-
-  font-size: 12px;
-  white-space: nowrap;
-
-  opacity: 0;
-  visibility: hidden;
-
-  transition: 0.25s ease;
-
-  border: 1px solid var(--border);
-
-  pointer-events: none;
-}
 
 /* NAVBAR BUTTON */
 .nav-btn{
@@ -616,5 +619,73 @@ body{
   opacity:1;
 
   visibility:visible;
+
+}
+
+
+/* =====================================
+   VIEW TRANSITION
+===================================== */
+
+::view-transition-old(root),
+::view-transition-new(root){
+
+    animation:none;
+
+    mix-blend-mode:normal;
+
+}
+
+::view-transition-old(root){
+
+    z-index:1;
+
+    animation:
+        oldFade .55s ease forwards;
+
+}
+
+::view-transition-new(root){
+
+    z-index:100;
+
+    animation:
+        newScale .55s cubic-bezier(.4,0,.2,1);
+
+}
+
+@keyframes oldFade{
+
+    from{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+    to{
+
+        opacity:0;
+        transform:scale(.985);
+
+    }
+
+}
+
+@keyframes newScale{
+
+    from{
+
+        opacity:.75;
+        transform:scale(1.02);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
 
 }
