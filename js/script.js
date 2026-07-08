@@ -1,3 +1,7 @@
+window.addEventListener("load", () => {
+    document.body.classList.add("loaded");
+});
+
 /* =========================
    SMOOTH SCROLL LINKS
 ========================= */
@@ -163,6 +167,7 @@ if(scrollContainer){
    TYPEWRITER HEADLINE
 ========================= */
 
+
 const headline =
 document.getElementById(
   "rotating-headline"
@@ -322,3 +327,194 @@ mobileOverlay.addEventListener("click", () => {
   document.body.style.overflow = "";
 
 });
+
+
+/* ======================================
+   RESOURCE PAGINATION
+====================================== */
+
+const resourcePages =
+    document.querySelectorAll(".resource-page");
+
+const pageButtons =
+    document.querySelectorAll(".pagination .page-btn:not(.prev):not(.next)");
+
+const prevButton =
+    document.querySelector(".pagination .prev");
+
+const nextButton =
+    document.querySelector(".pagination .next");
+
+if(resourcePages.length){
+
+    let currentPage = 0;
+
+    function updatePagination(index){
+
+        resourcePages.forEach(page=>{
+
+            page.classList.remove("active");
+
+        });
+
+        pageButtons.forEach(button=>{
+
+            button.classList.remove("active");
+
+        });
+
+        resourcePages[index].classList.add("active");
+
+        pageButtons[index].classList.add("active");
+
+        prevButton.disabled = index===0;
+
+        nextButton.disabled =
+            index===resourcePages.length-1;
+
+        currentPage=index;
+
+    }
+
+    pageButtons.forEach((button,index)=>{
+
+        button.addEventListener("click",()=>{
+
+            updatePagination(index);
+
+        });
+
+    });
+
+    prevButton.addEventListener("click",()=>{
+
+        if(currentPage>0){
+
+            updatePagination(currentPage-1);
+
+        }
+
+    });
+
+    nextButton.addEventListener("click",()=>{
+
+        if(currentPage<resourcePages.length-1){
+
+            updatePagination(currentPage+1);
+
+        }
+
+    });
+
+    updatePagination(0);
+
+}
+
+const searchInput =
+document.getElementById("resourceSearch");
+
+const searchResults =
+document.getElementById("searchResults");
+
+const pages =
+document.querySelectorAll(".resource-page");
+
+const pagination =
+document.querySelector(".pagination");
+
+const resources =
+document.querySelectorAll(".resource-item");
+
+if(searchInput){
+
+    searchInput.addEventListener("input",()=>{
+
+        const keyword =
+        searchInput.value
+        .trim()
+        .toLowerCase();
+
+        searchResults.innerHTML="";
+
+      if (keyword === "") {
+
+          // Clear previous search results
+          searchResults.innerHTML = "";
+
+          // Hide the search results container
+          searchResults.classList.remove("active");
+          searchResults.style.display = "none";
+
+          // Show the current pagination page again
+          pages.forEach((page, index) => {
+
+              page.style.display =
+                  index === currentPage ? "block" : "none";
+
+          });
+
+          // Bring back pagination
+          pagination.style.display = "flex";
+
+          return;
+
+      }
+
+        let matches=[];
+
+        resources.forEach((item,index)=>{
+
+            const text=
+            item.dataset.search.toLowerCase();
+
+            if(text.includes(keyword)){
+
+                matches.push(item);
+
+            }
+
+        });
+
+        pages.forEach(page=>{
+
+            page.style.display="none";
+
+        });
+
+        pagination.style.display="none";
+
+        searchResults.style.display = "block";
+        searchResults.classList.add("active");
+
+        if(matches.length===0){
+
+            searchResults.innerHTML=`
+
+            <div class="no-results">
+
+                <h3>No resources found</h3>
+
+                <p>
+                Try another keyword.
+                </p>
+
+            </div>
+
+            `;
+
+            return;
+
+        }
+
+        matches.forEach(item=>{
+
+            const clone=
+            item.cloneNode(true);
+
+            searchResults.appendChild(clone);
+
+        });
+
+    });
+
+}
