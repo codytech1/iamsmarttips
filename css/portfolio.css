@@ -25,7 +25,7 @@
   letter-spacing:4px;
   text-transform:uppercase;
 
-  color:#d07a43;
+  color: var(--primary) !important;
 
   margin-bottom:18px;
 }
@@ -233,6 +233,12 @@
   border:1px solid var(--border);
 
   transition:.3s ease;
+
+    display:block;
+
+    text-decoration:none;
+
+    color:inherit;
 }
 
 .portfolio-card:hover{
