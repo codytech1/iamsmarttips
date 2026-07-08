@@ -43,7 +43,7 @@
 
 .about-heading{
   line-height:1.05;
-  font-size:72px;
+  font-size:50px;
   margin-bottom:20px;
 
   color:var(--text);
@@ -247,8 +247,8 @@
 
   padding:16px 30px;
 
-  background:var(--text);
-  color:var(--bg);
+  background:var(--primary);
+  color:white;
 
   text-decoration:none;
 
