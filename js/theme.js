@@ -126,7 +126,7 @@ if (themeBtn) {
 
             {
 
-                duration: 500,
+                duration: 250,
 
                 easing:
                     "cubic-bezier(.65,0,.35,1)",
