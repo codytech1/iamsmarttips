@@ -982,14 +982,21 @@ body.light-theme .hero{
 ========================= */
 
 .social-stats{
+  width:100%;
   max-width:1100px;
 
   margin:20px auto;
   margin-top:-100px;
 
-  display:flex;
-  justify-content:center;
-  gap:50px;
+  padding:0 20px;
+
+  display:grid;
+
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+
+  gap:30px;
+
+  box-sizing:border-box;
 }
 
 /* STAT CARD */
@@ -997,7 +1004,8 @@ body.light-theme .hero{
 .stat{
   position:relative;
 
-  flex:0 0 260px;
+  width:100%;
+  min-width:0;
 
   padding:30px 25px 20px;
 
@@ -2617,31 +2625,40 @@ body.light-theme .btn.secondary{
   }
 
 
-  /* ===================================
-     SOCIAL STATS
-  =================================== */
+/* ===================================
+   SOCIAL STATS
+=================================== */
 
-  .social-stats {
-    margin-top: 0;
-    padding: 20px 20px;
-    gap: 28px;
-    height: auto;
-  }
+.social-stats {
+  margin-top: 0;
+  padding: 20px;
+  gap: clamp(14px, 2vw, 28px);
 
-  .stat {
-    width: 100%;
-    max-width: 320px;
-    flex: none;
-    margin: 0 auto;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 
-  .stat-top {
-    font-size: 0.95rem;
-  }
+  width: 100%;
+  box-sizing: border-box;
+  height: auto;
+}
 
-  .count {
-    font-size: 0.95rem;
-  }
+.stat {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.stat-top {
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+}
+
+.count {
+  font-size: clamp(0.85rem, 1.1vw, 1rem);
+}
+
+
 
 
   /* ===================================
@@ -2962,4 +2979,3 @@ body.light-theme .btn.secondary{
   }
 
 }
-
