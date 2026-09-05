@@ -265,68 +265,45 @@ document.querySelector(".mobile-overlay");
 const closeMenu =
 document.querySelector(".close-menu");
 
-if(menuToggle){
+
+if (menuToggle && mobileMenu && mobileOverlay) {
 
   menuToggle.addEventListener("click", () => {
 
     mobileMenu.classList.add("active");
-
     mobileOverlay.classList.add("active");
+
+    document.body.style.overflow = "hidden";
 
   });
 
 }
 
-if(closeMenu){
+if (closeMenu && mobileMenu && mobileOverlay) {
 
   closeMenu.addEventListener("click", () => {
 
     mobileMenu.classList.remove("active");
-
     mobileOverlay.classList.remove("active");
+
+    document.body.style.overflow = "";
 
   });
 
 }
 
-if(mobileOverlay){
+if (mobileOverlay && mobileMenu) {
 
   mobileOverlay.addEventListener("click", () => {
 
     mobileMenu.classList.remove("active");
-
     mobileOverlay.classList.remove("active");
+
+    document.body.style.overflow = "";
 
   });
 
 }
-
-menuToggle.addEventListener("click", () => {
-
-  mobileMenu.classList.add("active");
-  mobileOverlay.classList.add("active");
-
-  document.body.style.overflow = "hidden";
-
-});
-
-closeMenu.addEventListener("click", () => {
-
-  mobileMenu.classList.remove("active");
-  mobileOverlay.classList.remove("active");
-
-  document.body.style.overflow = "";
-
-});
-
-mobileOverlay.addEventListener("click", () => {
-
-  mobileMenu.classList.remove("active");
-  mobileOverlay.classList.remove("active");
-
-  document.body.style.overflow = "";
-
-});
 
 
 /* ======================================
