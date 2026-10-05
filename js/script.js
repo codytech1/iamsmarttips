@@ -1,471 +1,314 @@
 window.addEventListener("load", () => {
-    document.body.classList.add("loaded");
+   document.body.classList.add("loaded");
 });
 
 /* =========================
    SMOOTH SCROLL LINKS
 ========================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+   anchor.addEventListener("click", function (e) {
+      const target = document.querySelector(this.getAttribute("href"));
 
-  anchor.addEventListener("click", function(e){
+      if (target) {
+         e.preventDefault();
 
-    const target =
-    document.querySelector(this.getAttribute("href"));
-
-    if(target){
-
-      e.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth"
-      });
-
-    }
-
-  });
-
+         target.scrollIntoView({
+            behavior: "smooth",
+         });
+      }
+   });
 });
 
 /* =========================
    NAVBAR SCROLL EFFECT
 ========================= */
 
-const navbar =
-document.querySelector(".navbar");
+const navbar = document.querySelector(".navbar");
 
-if(navbar){
-
-  window.addEventListener("scroll", () => {
-
-    if(window.scrollY > 50){
-
-      navbar.classList.add("scrolled");
-
-    }else{
-
-      navbar.classList.remove("scrolled");
-
-    }
-
-  });
-
+if (navbar) {
+   window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+         navbar.classList.add("scrolled");
+      } else {
+         navbar.classList.remove("scrolled");
+      }
+   });
 }
 
 /* =========================
    ACTIVE NAV LINKS
 ========================= */
 
-const links =
-document.querySelectorAll(".nav-links a, .mobile-links a");
+const links = document.querySelectorAll(".nav-links a, .mobile-links a");
 
-const currentPage =
-window.location.pathname.split("/").pop();
+const currentPage = window.location.pathname.split("/").pop();
 
-links.forEach(link => {
+links.forEach((link) => {
+   const linkPage = link.getAttribute("href");
 
-  const linkPage =
-  link.getAttribute("href");
-
-  if(
-    linkPage === currentPage ||
-    (currentPage === "" &&
-     linkPage === "index.html")
-  ){
-
-    link.classList.add("active");
-
-  }
-
+   if (
+      linkPage === currentPage ||
+      (currentPage === "" && linkPage === "index.html")
+   ) {
+      link.classList.add("active");
+   }
 });
 
 /* =========================
    FEATURED VIDEO SCROLLER
 ========================= */
 
-const scrollContainer =
-document.querySelector(".video-scroll");
+const scrollContainer = document.querySelector(".video-scroll");
 
-if(scrollContainer){
+if (scrollContainer) {
+   const rightArrow = document.querySelector(".arrow.right");
 
-  const rightArrow =
-  document.querySelector(".arrow.right");
+   const leftArrow = document.querySelector(".arrow.left");
 
-  const leftArrow =
-  document.querySelector(".arrow.left");
-
-  if(rightArrow){
-
-    rightArrow.addEventListener("click", () => {
-
-      scrollContainer.scrollBy({
-        left: 400,
-        behavior: "smooth"
+   if (rightArrow) {
+      rightArrow.addEventListener("click", () => {
+         scrollContainer.scrollBy({
+            left: 400,
+            behavior: "smooth",
+         });
       });
+   }
 
-    });
-
-  }
-
-  if(leftArrow){
-
-    leftArrow.addEventListener("click", () => {
-
-      scrollContainer.scrollBy({
-        left: -400,
-        behavior: "smooth"
+   if (leftArrow) {
+      leftArrow.addEventListener("click", () => {
+         scrollContainer.scrollBy({
+            left: -400,
+            behavior: "smooth",
+         });
       });
+   }
 
-    });
+   scrollContainer.innerHTML += scrollContainer.innerHTML;
 
-  }
+   let speed = 0.4;
+   let isHovering = false;
 
-  scrollContainer.innerHTML +=
-  scrollContainer.innerHTML;
+   scrollContainer.addEventListener("mouseenter", () => (isHovering = true));
 
-  let speed = 0.4;
-  let isHovering = false;
+   scrollContainer.addEventListener("mouseleave", () => (isHovering = false));
 
-  scrollContainer.addEventListener(
-    "mouseenter",
-    () => isHovering = true
-  );
+   function infiniteScroll() {
+      if (!isHovering) {
+         scrollContainer.scrollLeft += speed;
+      }
 
-  scrollContainer.addEventListener(
-    "mouseleave",
-    () => isHovering = false
-  );
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+         scrollContainer.scrollLeft = 0;
+      }
 
-  function infiniteScroll(){
+      requestAnimationFrame(infiniteScroll);
+   }
 
-    if(!isHovering){
-
-      scrollContainer.scrollLeft += speed;
-
-    }
-
-    if(
-      scrollContainer.scrollLeft >=
-      scrollContainer.scrollWidth / 2
-    ){
-
-      scrollContainer.scrollLeft = 0;
-
-    }
-
-    requestAnimationFrame(
-      infiniteScroll
-    );
-
-  }
-
-  infiniteScroll();
-
+   infiniteScroll();
 }
 
 /* =========================
    TYPEWRITER HEADLINE
 ========================= */
 
+const headline = document.getElementById("rotating-headline");
 
-const headline =
-document.getElementById(
-  "rotating-headline"
-);
+if (headline) {
+   const phrases = [
+      "I help brands turn attention into influence.",
 
-if(headline){
+      "I create content that drives trust and action.",
 
-const phrases = [
+      "I connect tech brands with engaged audiences.",
+   ];
 
-  "I help brands turn attention into influence.",
+   let phraseIndex = 0;
+   let charIndex = 0;
+   let deleting = false;
 
-  "I create content that drives trust and action.",
+   function typeWriter() {
+      const currentPhrase = phrases[phraseIndex];
 
-  "I connect tech brands with engaged audiences."
+      if (!deleting) {
+         headline.textContent = currentPhrase.substring(0, charIndex + 1);
 
-];
+         charIndex++;
 
-  let phraseIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
+         if (charIndex === currentPhrase.length) {
+            deleting = true;
 
-  function typeWriter(){
+            setTimeout(typeWriter, 1500);
 
-    const currentPhrase =
-    phrases[phraseIndex];
+            return;
+         }
+      } else {
+         headline.textContent = currentPhrase.substring(0, charIndex - 1);
 
-    if(!deleting){
+         charIndex--;
 
-      headline.textContent =
-      currentPhrase.substring(
-        0,
-        charIndex + 1
-      );
+         if (charIndex === 0) {
+            deleting = false;
 
-      charIndex++;
-
-      if(
-        charIndex ===
-        currentPhrase.length
-      ){
-
-        deleting = true;
-
-        setTimeout(
-          typeWriter,
-          1500
-        );
-
-        return;
-
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+         }
       }
 
-    }else{
+      setTimeout(typeWriter, deleting ? 40 : 70);
+   }
 
-      headline.textContent =
-      currentPhrase.substring(
-        0,
-        charIndex - 1
-      );
-
-      charIndex--;
-
-      if(charIndex === 0){
-
-        deleting = false;
-
-        phraseIndex =
-        (phraseIndex + 1) %
-        phrases.length;
-
-      }
-
-    }
-
-    setTimeout(
-      typeWriter,
-      deleting ? 40 : 70
-    );
-
-  }
-
-  typeWriter();
-
+   typeWriter();
 }
 
-const menuToggle =
-document.querySelector(".menu-toggle");
+const menuToggle = document.querySelector(".menu-toggle");
 
-const mobileMenu =
-document.querySelector(".mobile-menu");
+const mobileMenu = document.querySelector(".mobile-menu");
 
-const mobileOverlay =
-document.querySelector(".mobile-overlay");
+const mobileOverlay = document.querySelector(".mobile-overlay");
 
-const closeMenu =
-document.querySelector(".close-menu");
-
+const closeMenu = document.querySelector(".close-menu");
 
 if (menuToggle && mobileMenu && mobileOverlay) {
+   menuToggle.addEventListener("click", () => {
+      mobileMenu.classList.add("active");
+      mobileOverlay.classList.add("active");
 
-  menuToggle.addEventListener("click", () => {
-
-    mobileMenu.classList.add("active");
-    mobileOverlay.classList.add("active");
-
-    document.body.style.overflow = "hidden";
-
-  });
-
+      document.body.style.overflow = "hidden";
+   });
 }
 
 if (closeMenu && mobileMenu && mobileOverlay) {
+   closeMenu.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      mobileOverlay.classList.remove("active");
 
-  closeMenu.addEventListener("click", () => {
-
-    mobileMenu.classList.remove("active");
-    mobileOverlay.classList.remove("active");
-
-    document.body.style.overflow = "";
-
-  });
-
+      document.body.style.overflow = "";
+   });
 }
 
 if (mobileOverlay && mobileMenu) {
+   mobileOverlay.addEventListener("click", () => {
+      mobileMenu.classList.remove("active");
+      mobileOverlay.classList.remove("active");
 
-  mobileOverlay.addEventListener("click", () => {
-
-    mobileMenu.classList.remove("active");
-    mobileOverlay.classList.remove("active");
-
-    document.body.style.overflow = "";
-
-  });
-
+      document.body.style.overflow = "";
+   });
 }
-
 
 /* ======================================
    RESOURCE PAGINATION
 ====================================== */
 
-const resourcePages =
-    document.querySelectorAll(".resource-page");
+const resourcePages = document.querySelectorAll(".resource-page");
 
-const pageButtons =
-    document.querySelectorAll(".pagination .page-btn:not(.prev):not(.next)");
+const pageButtons = document.querySelectorAll(
+   ".pagination .page-btn:not(.prev):not(.next)",
+);
 
-const prevButton =
-    document.querySelector(".pagination .prev");
+const prevButton = document.querySelector(".pagination .prev");
 
-const nextButton =
-    document.querySelector(".pagination .next");
+const nextButton = document.querySelector(".pagination .next");
 
-if(resourcePages.length){
+if (resourcePages.length) {
+   let currentPage = 0;
 
-    let currentPage = 0;
+   function updatePagination(index) {
+      resourcePages.forEach((page) => {
+         page.classList.remove("active");
+      });
 
-    function updatePagination(index){
+      pageButtons.forEach((button) => {
+         button.classList.remove("active");
+      });
 
-        resourcePages.forEach(page=>{
+      resourcePages[index].classList.add("active");
 
-            page.classList.remove("active");
+      pageButtons[index].classList.add("active");
 
-        });
+      prevButton.disabled = index === 0;
 
-        pageButtons.forEach(button=>{
+      nextButton.disabled = index === resourcePages.length - 1;
 
-            button.classList.remove("active");
+      currentPage = index;
+   }
 
-        });
+   pageButtons.forEach((button, index) => {
+      button.addEventListener("click", () => {
+         updatePagination(index);
+      });
+   });
 
-        resourcePages[index].classList.add("active");
+   prevButton.addEventListener("click", () => {
+      if (currentPage > 0) {
+         updatePagination(currentPage - 1);
+      }
+   });
 
-        pageButtons[index].classList.add("active");
+   nextButton.addEventListener("click", () => {
+      if (currentPage < resourcePages.length - 1) {
+         updatePagination(currentPage + 1);
+      }
+   });
 
-        prevButton.disabled = index===0;
-
-        nextButton.disabled =
-            index===resourcePages.length-1;
-
-        currentPage=index;
-
-    }
-
-    pageButtons.forEach((button,index)=>{
-
-        button.addEventListener("click",()=>{
-
-            updatePagination(index);
-
-        });
-
-    });
-
-    prevButton.addEventListener("click",()=>{
-
-        if(currentPage>0){
-
-            updatePagination(currentPage-1);
-
-        }
-
-    });
-
-    nextButton.addEventListener("click",()=>{
-
-        if(currentPage<resourcePages.length-1){
-
-            updatePagination(currentPage+1);
-
-        }
-
-    });
-
-    updatePagination(0);
-
+   updatePagination(0);
 }
 
-const searchInput =
-document.getElementById("resourceSearch");
+const searchInput = document.getElementById("resourceSearch");
 
-const searchResults =
-document.getElementById("searchResults");
+const searchResults = document.getElementById("searchResults");
 
-const pages =
-document.querySelectorAll(".resource-page");
+const pages = document.querySelectorAll(".resource-page");
 
-const pagination =
-document.querySelector(".pagination");
+const pagination = document.querySelector(".pagination");
 
-const resources =
-document.querySelectorAll(".resource-item");
+const resources = document.querySelectorAll(".resource-item");
 
-if(searchInput){
+if (searchInput) {
+   searchInput.addEventListener("input", () => {
+      const keyword = searchInput.value.trim().toLowerCase();
 
-    searchInput.addEventListener("input",()=>{
-
-        const keyword =
-        searchInput.value
-        .trim()
-        .toLowerCase();
-
-        searchResults.innerHTML="";
+      searchResults.innerHTML = "";
 
       if (keyword === "") {
+         // Clear previous search results
+         searchResults.innerHTML = "";
 
-          // Clear previous search results
-          searchResults.innerHTML = "";
+         // Hide the search results container
+         searchResults.classList.remove("active");
+         searchResults.style.display = "none";
 
-          // Hide the search results container
-          searchResults.classList.remove("active");
-          searchResults.style.display = "none";
+         // Show the current pagination page again
+         pages.forEach((page, index) => {
+            page.style.display = index === currentPage ? "block" : "none";
+         });
 
-          // Show the current pagination page again
-          pages.forEach((page, index) => {
+         // Bring back pagination
+         pagination.style.display = "flex";
 
-              page.style.display =
-                  index === currentPage ? "block" : "none";
-
-          });
-
-          // Bring back pagination
-          pagination.style.display = "flex";
-
-          return;
-
+         return;
       }
 
-        let matches=[];
+      let matches = [];
 
-        resources.forEach((item,index)=>{
+      resources.forEach((item, index) => {
+         const text = item.dataset.search.toLowerCase();
 
-            const text=
-            item.dataset.search.toLowerCase();
+         if (text.includes(keyword)) {
+            matches.push(item);
+         }
+      });
 
-            if(text.includes(keyword)){
+      pages.forEach((page) => {
+         page.style.display = "none";
+      });
 
-                matches.push(item);
+      pagination.style.display = "none";
 
-            }
+      searchResults.style.display = "block";
+      searchResults.classList.add("active");
 
-        });
-
-        pages.forEach(page=>{
-
-            page.style.display="none";
-
-        });
-
-        pagination.style.display="none";
-
-        searchResults.style.display = "block";
-        searchResults.classList.add("active");
-
-        if(matches.length===0){
-
-            searchResults.innerHTML=`
+      if (matches.length === 0) {
+         searchResults.innerHTML = `
 
             <div class="no-results">
 
@@ -479,19 +322,22 @@ if(searchInput){
 
             `;
 
-            return;
+         return;
+      }
 
-        }
+      matches.forEach((item) => {
+         const clone = item.cloneNode(true);
 
-        matches.forEach(item=>{
-
-            const clone=
-            item.cloneNode(true);
-
-            searchResults.appendChild(clone);
-
-        });
-
-    });
-
+         searchResults.appendChild(clone);
+      });
+   });
 }
+
+// Lazy load images across the website
+document.addEventListener("DOMContentLoaded", () => {
+   document.querySelectorAll("img").forEach((img) => {
+      if (!img.hasAttribute("loading")) {
+         img.setAttribute("loading", "lazy");
+      }
+   });
+});
