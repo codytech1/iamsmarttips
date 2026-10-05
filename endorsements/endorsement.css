@@ -1,0 +1,318 @@
+/* ================================
+   BRAND GALLERY
+================================ */
+
+.brand-gallery {
+   width: min(1350px, calc(100% - 40px));
+   margin: 40px auto 7px;
+   padding: 28px 22px 25px;
+   background: var(--bg-card, #f8f9fa);
+   border: 1px solid var(--border, #e5e7eb);
+   border-radius: 22px;
+   box-sizing: border-box;
+   overflow: hidden;
+}
+
+.gallery-header {
+   display: flex;
+   align-items: flex-end;
+   justify-content: space-between;
+   gap: 30px;
+   margin-bottom: 22px;
+}
+
+.gallery-label {
+   display: block;
+   margin-bottom: 8px;
+   font-size: 13px;
+   font-weight: 700;
+   letter-spacing: 1.5px;
+   color: #4777ad;
+}
+
+.gallery-header h2 {
+   margin: 0;
+   font-size: clamp(28px, 3vw, 38px);
+   line-height: 1.15;
+   color: var(--text, #111827);
+}
+
+.gallery-header p {
+   margin: 8px 0 0;
+   font-size: 16px;
+   color: var(--text-secondary, #6b7280);
+}
+
+.gallery-controls {
+   display: flex;
+   gap: 12px;
+   flex-shrink: 0;
+}
+
+.gallery-btn {
+   width: 52px;
+   height: 52px;
+   border: 1px solid #d7dce2;
+   border-radius: 50%;
+   background: transparent;
+   color: var(--text, #111827);
+   font-size: 22px;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   transition: 0.25s ease;
+}
+
+.gallery-btn:hover {
+   background: var(--text, #111827);
+   color: #fff;
+   border-color: var(--text, #111827);
+}
+
+.gallery-wrapper {
+   overflow: hidden;
+   width: 100%;
+}
+
+.gallery-track {
+   display: flex;
+   gap: 10px;
+   transition: transform 0.45s ease;
+   will-change: transform;
+}
+
+.gallery-slide {
+   flex: 0 0 calc((100% - 30px) / 4);
+   aspect-ratio: 1 / 1;
+   border-radius: 9px;
+   overflow: hidden;
+   background: #e9ecef;
+}
+
+.gallery-slide img {
+   width: 100%;
+   height: 100%;
+   display: block;
+   object-fit: cover;
+}
+
+/* Dots */
+
+.gallery-dots {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 10px;
+   margin-top: 22px;
+}
+
+.gallery-dot {
+   width: 10px;
+   height: 10px;
+   padding: 0;
+   border: 0;
+   border-radius: 50%;
+   background: #c8ccd2;
+   cursor: pointer;
+   transition: 0.25s ease;
+}
+
+.gallery-dot.active {
+   background: #111827;
+   transform: scale(1.05);
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+   .brand-gallery {
+      width: min(100% - 30px, 700px);
+   }
+
+   .gallery-slide {
+      flex: 0 0 calc((100% - 10px) / 2);
+   }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+   .brand-gallery {
+      width: calc(100% - 24px);
+      margin: 30px auto 5px;
+      padding: 22px 15px 20px;
+      border-radius: 18px;
+   }
+
+   .gallery-header {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 18px;
+   }
+
+   .gallery-header h2 {
+      font-size: 26px;
+   }
+
+   .gallery-header p {
+      font-size: 14px;
+      line-height: 1.5;
+   }
+
+   .gallery-controls {
+      width: 100%;
+      justify-content: flex-end;
+   }
+
+   .gallery-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 18px;
+   }
+
+   .gallery-slide {
+      flex: 0 0 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+   }
+
+   .gallery-dots {
+      margin-top: 18px;
+      gap: 8px;
+   }
+
+   .gallery-dot {
+      width: 8px;
+      height: 8px;
+   }
+}
+
+/* ================================
+   ENDORSEMENT TOP ROW
+================================ */
+
+.endorsement-top-row {
+   width: min(1100px, calc(100% - 40px));
+   margin: 25px auto 0;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   box-sizing: border-box;
+}
+
+.endorsement-back {
+   margin: 0;
+}
+
+.endorsement-back a {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   padding: 10px 16px;
+   border: 1px solid var(--border, #e5e7eb);
+   border-radius: 999px;
+   color: var(--text, #111827);
+   text-decoration: none;
+   font-size: 14px;
+   font-weight: 600;
+   transition: 0.25s ease;
+}
+
+.endorsement-back a:hover {
+   background: var(--text, #535557);
+   color: #7a7373;
+   border-color: var(--text, #111827);
+   transform: translateX(-3px);
+}
+
+/* THEME TOGGLE */
+
+.endorsement-top-row .theme-toggle {
+   width: 48px;
+   height: 48px;
+   padding: 0;
+   border: 1px solid var(--border, #e5e7eb);
+   border-radius: 50%;
+   background: var(--bg-card, #f8f9fa);
+   color: var(--text, #111827);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 20px;
+   cursor: pointer;
+   transition: 0.25s ease;
+}
+
+.endorsement-top-row .theme-toggle:hover {
+   transform: rotate(12deg);
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+   .endorsement-top-row {
+      width: calc(100% - 24px);
+      margin-top: 18px;
+   }
+
+   .endorsement-back a {
+      padding: 9px 14px;
+      font-size: 13px;
+   }
+
+   .endorsement-top-row .theme-toggle {
+      width: 42px;
+      height: 42px;
+      font-size: 18px;
+   }
+}
+
+/* ================================
+   ENDORSEMENT COMING SOON CARDS
+================================ */
+
+.coming-soon-card {
+   position: relative;
+   overflow: hidden;
+   cursor: default;
+   pointer-events: none;
+}
+
+/* Blur and darken the card */
+.coming-soon-card::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   z-index: 5;
+
+   background: rgba(120, 120, 120, 0.65);
+   backdrop-filter: blur(7px);
+   -webkit-backdrop-filter: blur(7px);
+
+   border-radius: inherit;
+}
+
+/* Coming Soon text */
+.coming-soon-card::after {
+   content: "COMING SOON";
+
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   z-index: 6;
+
+   transform: translate(-50%, -50%);
+
+   color: #ffffff;
+   font-size: clamp(24px, 3vw, 34px);
+   font-weight: 800;
+   letter-spacing: 2px;
+   white-space: nowrap;
+
+   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
